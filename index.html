@@ -52,7 +52,7 @@
 				}
 			  window.plugins.flashlight.available(function(isAvailable) {
 			  	//Play Audio
-			  	var my_media = new Media(getPhoneGapPath()+'scifi10.mp3', onSuccess, onError);
+			  	var my_media = new Media(getPhoneGapPath()+'audio/scifi10.mp3', onSuccess, onError);
 	            my_media.play();
 			    if (isAvailable) {
 			      window.plugins.flashlight.toggle();
