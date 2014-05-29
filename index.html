@@ -4,15 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0">
 		<title>LedLight App By Rushi</title>
-		<script src="phonegap.js"></script>
+ 		<script src="phonegap.js"></script>
 		<script src="js/plugins/Flashlight.js"></script>
 		<style type="text/css">
 			.off{
-				background-image:url(img/off.png); 
+				background-image:url('img/off.png'); 
 				background-repeat:repeat;
 			}
 			.on{
-				background-image:url(img/on.png); 
+				background-image:url('img/on.png'); 
 				background-repeat:repeat;
 			}
 			body{
@@ -21,11 +21,22 @@
 			}
 			.ledSwitch{
 				position: absolute;
+				display:inline;
 			    top: 50%;
 			    left: 50%;
 			    margin-top: -50px;
 			    margin-left: -70px;
+				width:10%;
+			    height:31%;			    
 			}
+			.pwrBtnOff{
+				background-image:url('img/power_on.png'); 
+				background-repeat:no-repeat;
+			}
+			.pwrBtnOn{
+				background-image:url('img/power_off.png'); 
+				background-repeat:no-repeat;
+			}			
 		</style>
 		<script type="text/javascript">
 
@@ -41,20 +52,20 @@
 
 			function toggleLed() {
 			  var bclass=document.getElementsByTagName('body')[0].getAttribute('class');
-				if(bclass=='off'){
+				if(bclass.indexOf('off')!=-1){
 					document.getElementsByTagName('body')[0].setAttribute('class','on');
-					document.getElementById('onoffimg').setAttribute('src','img/power_on.png');
-				}else{
+					document.getElementById('onoffimg').setAttribute('class','ledSwitch pwrBtnOn');
+				}else{ 
 					document.getElementsByTagName('body')[0].setAttribute('class','off');
-					document.getElementById('onoffimg').setAttribute('src','img/power_off.png');
+					document.getElementById('onoffimg').setAttribute('class','ledSwitch pwrBtnOff');
 				}
-			  window.plugins.flashlight.available(function(isAvailable) {
-			    if (isAvailable) {
-			      window.plugins.flashlight.toggle();
-			    } else {
-			      alert("Flashlight not available on this device");
-			    }
-			  })
+			  	window.plugins.flashlight.available(function(isAvailable) {
+				    if (isAvailable) {
+				      window.plugins.flashlight.toggle();
+				    } else {
+				      alert("Flashlight not available on this device");
+				    }
+				});
 			}
 						/*
 
@@ -79,8 +90,8 @@
 		</script>
 	</head>
 	<body class="off">
-		<div class="ledSwitch">
-			<img src="img/power_off.png" id="onoffimg" onClick="toggleLed()"/>
+		<div id="onoffimg" class="ledSwitch pwrBtnOff" onClick="toggleLed()">
+			<!-- <img src="img/power_off.png" id="onoffimg" onClick="toggleLed()"/> -->
 		</div>
 	</body>
 </html>
