@@ -51,6 +51,9 @@
 					document.getElementById('onoffimg').setAttribute('src','img/power_off.png');
 				}
 			  window.plugins.flashlight.available(function(isAvailable) {
+			  	//Play Audio
+			  	var my_media = new Media("audio/scifi10.mp3", onSuccess, onError);
+	            my_media.play();
 			    if (isAvailable) {
 			      window.plugins.flashlight.toggle();
 			    } else {
