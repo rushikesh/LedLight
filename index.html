@@ -61,6 +61,18 @@
 			    }
 			  })
 			}
+
+			// onSuccess Callback
+			function onSuccess() {
+			    console.log("playAudio():Audio Success");
+			}
+
+			// onError Callback 
+			//
+			function onError(error) {
+			    alert('code: '    + error.code    + '\n' + 
+			          'message: ' + error.message + '\n');
+			}
 						/*
 
 			function flashlight (){
